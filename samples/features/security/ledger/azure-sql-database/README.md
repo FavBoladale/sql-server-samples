@@ -29,7 +29,58 @@ You also need to make sure the following software is installed on your machine:
 
 1. PowerShell modules:
 
-   1. Az version 7.2.1 or later. For details on how to install the Az PowerShell module, see [Install the Azure Az PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). To determine the version of the Az module installed on your machine, run the following command from a PowerShell session.
+   1. Az version 7.2.1 or later. For details on how to install the Az PowerShell module, see [Install the Azure Az PowerShell module or follow the steps below](https://docs.microsoft.com/powershell/azure/install-az-ps).
+** Install Azure PowerShell on Windows
+Run the following command from PowerShell to determine your PowerShell version:
+ 
+  ```powershell
+$PSVersionTable.PSVersion
+ ```
+** Determine if you have the AzureRM PowerShell module installed:
+    ```powershell
+ Get-Module -Name AzureRM -ListAvailable
+    ```
+** Update to Windows PowerShell 5.1
+    ```powershell
+https://learn.microsoft.com/en-us/powershell/gallery/powershellget/update-powershell-51?view=powershellget-3.x
+    ```
+** Install .NET Framework 4.7.2 or later
+https://dotnet.microsoft.com/en-us/download
+
+
+** Update PowerShellGet
+
+** Launch Windows PowerShell 5.1 elevated as an administrator and run the following command to update PowerShellGet:
+    ```powershell
+Install-Module -Name PowerShellGet -Force
+    ```
+** Set the PowerShell execution policy to remote signed or less restrictive
+
+** Check the PowerShell execution policy:
+    ```powershell
+Get-ExecutionPolicy -List
+    ```
+** Set the PowerShell execution policy to remote signed:
+    ```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    ```
+
+** Step 2 - Installation
+** Use the Install-Module cmdlet to install the Az PowerShell module:
+ ```powershell
+Install-Module -Name Az -Repository PSGallery -Force
+  ```
+** Update the Az PowerShell module
+** Use Update-Module to update to the latest version of the Az PowerShell module:
+ ```powershell
+Update-Module -Name Az -Force
+ ```
+** Sign in
+** To start managing your Azure resources with the Az PowerShell module, launch a PowerShell session and run Connect-AzAccount to sign in to Azure:
+ ```powershell
+Connect-AzAccount
+ ```
+** To determine the version of the Az module installed on your machine, run the following command from a PowerShell session.
 
      ```powershell
      Get-InstalledModule -Name Az
